@@ -3,6 +3,10 @@ const { isHelpSlideoverOpen } = useDashboard()
 const { isDashboardSearchModalOpen } = useUIState()
 const { metaSymbol } = useShortcuts()
 
+const {
+  signOut,
+} = useAuth()
+
 const items = computed(() => [
   [{
     slot: 'account',
@@ -41,7 +45,10 @@ const items = computed(() => [
     target: '_blank'
   }], [{
     label: 'Sign out',
-    icon: 'i-heroicons-arrow-left-on-rectangle'
+    icon: 'i-heroicons-arrow-left-on-rectangle',
+    click: async () => {
+      await signOut({ callbackUrl: '/login' })
+    }
   }]
 ])
 </script>

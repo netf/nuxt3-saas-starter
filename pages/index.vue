@@ -4,6 +4,9 @@ if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
+definePageMeta({ auth: false })
+
+
 useSeoMeta({
   titleTemplate: '',
   title: page.value.title,

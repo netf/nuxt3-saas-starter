@@ -1,11 +1,16 @@
 <script setup lang="ts">
+
 definePageMeta({
-  layout: 'auth'
+  layout: 'auth',
+  auth: {
+    unauthenticatedOnly: true,
+  }
 })
 
 useSeoMeta({
   title: 'Login'
 })
+
 
 const fields = [{
   name: 'email',
@@ -35,8 +40,20 @@ const providers = [{
   }
 }]
 
-function onSubmit(data: any) {
-  console.log('Submitted', data)
+const { signIn } = useAuth();
+
+
+async function onSubmit(data: any) {
+  const credentials = {
+    email: data.email,
+    password: data.password
+  };
+  try {
+    await signIn(credentials, { callbackUrl: '/dashboard' });
+    console.log('Successfully logged in!');
+  } catch (error) {
+    console.error(error);
+  }
 }
 </script>
 

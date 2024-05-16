@@ -1,35 +1,70 @@
 <script setup lang="ts">
-import type { NavItem } from '@nuxt/content/dist/runtime/types'
+import { ref } from 'vue';
+import type { NavItem } from '@nuxt/content/dist/runtime/types';
 
-const navigation = inject<Ref<NavItem[]>>('navigation', ref([]))
+const navigation = inject<Ref<NavItem[]>>('navigation', ref([]));
 
-const links = [{
-  label: 'Docs',
-  to: '/docs'
-}, {
-  label: 'Pricing',
-  to: '/pricing'
-}, {
-  label: 'Blog',
-  to: '/blog'
-}]
+const links = [
+  {
+    label: 'Products',
+    items: [
+      [{ label: 'Heroku Platform', to: '/products/platform' }],
+      [{ label: 'Heroku Data Services', to: '/products/data-services' }],
+      [{ label: 'Heroku Enterprise', to: '/products/enterprise' }],
+      [{ label: 'Heroku Teams', to: '/products/teams' }],
+      [{ label: 'Salesforce', to: '/products/salesforce' }]
+    ]
+  },
+  {
+    label: 'Pricing',
+    to: '/pricing'
+  },
+  {
+    label: 'Documentation',
+    to: '/docs'
+  },
+  {
+    label: 'Blog',
+    to: '/blog'
+  },
+];
 </script>
 
 <template>
-  <UHeader :links="links">
+  <UHeader>
     <template #logo>
-      Nuxt UI Pro <UBadge
-        label="SaaS"
-        variant="subtle"
-        class="mb-0.5"
-      />
+      <div class="flex items-center space-x-2">
+        <img src="" alt="Logo" class="h-8" />
+        <UBadge label="SaaS" variant="subtle" class="mb-0.5" />
+      </div>
+    </template>
+
+    <template #center>
+      <div class="flex space-x-4">
+        <template v-for="link in links" :key="link.label">
+          <div v-if="link.items">
+
+            <UDropdown mode="hover" :items="link.items.map(group => group.map(item => ({
+              ...item,
+              to: undefined,
+              click: () => $router.push(item.to)
+            })) )" :popper="{ placement: 'bottom-start' }">
+              <UButton square variant="ghost" color="white" :label="link.label" trailing-icon="i-heroicons-chevron-down-20-solid" />
+            </UDropdown>
+          </div>
+          <div v-else>
+            <UButton square variant="ghost" color="white" :to="link.to" :label="link.label" />
+          </div>
+        </template>
+      </div>
     </template>
 
     <template #right>
       <UButton
-        label="Sign in"
+        label="Log in"
         color="gray"
         to="/login"
+
       />
       <UButton
         label="Sign up"
@@ -37,7 +72,6 @@ const links = [{
         trailing
         color="black"
         to="/signup"
-        class="hidden lg:flex"
       />
     </template>
 
@@ -49,3 +83,35 @@ const links = [{
     </template>
   </UHeader>
 </template>
+
+<style scoped>
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.space-x-2 > * + * {
+  margin-left: 0.5rem;
+}
+
+.space-x-4 > * + * {
+  margin-left: 1rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
+.u-link {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.u-link:hover {
+  text-decoration: underline;
+}
+</style>

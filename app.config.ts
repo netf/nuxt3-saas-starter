@@ -3,18 +3,18 @@ export default defineAppConfig({
     primary: "mine-shaft",
     gray: "cool",
     button: {
-      rounded: "rounded-full",
+      rounded: "rounded-none",
       default: {
-        size: "md",
+        size: "sm",
       },
     },
     input: {
       default: {
-        size: "md",
+        size: "sm",
       },
     },
     card: {
-      rounded: "rounded-xl",
+      rounded: "rounded-none",
     },
     footer: {
       top: {
