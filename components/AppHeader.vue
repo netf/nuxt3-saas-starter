@@ -8,11 +8,9 @@ const links = [
   {
     label: 'Products',
     items: [
-      [{ label: 'Heroku Platform', to: '/products/platform' }],
-      [{ label: 'Heroku Data Services', to: '/products/data-services' }],
-      [{ label: 'Heroku Enterprise', to: '/products/enterprise' }],
-      [{ label: 'Heroku Teams', to: '/products/teams' }],
-      [{ label: 'Salesforce', to: '/products/salesforce' }]
+      [{ label: 'Project 1', to: '/products/project1' }],
+      [{ label: 'Project 2', to: '/products/project2' }],
+      [{ label: 'Project 3', to: '/products/project3' }],
     ]
   },
   {
