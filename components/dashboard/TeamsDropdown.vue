@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const teams = [{
+const workspaces = [{
   label: 'Nuxt',
   avatar: {
     src: 'https://avatars.githubusercontent.com/u/23360933?s=200&v=4'
   },
   click: () => {
-    team.value = teams[0]
+    workspace.value = workspaces[0]
   }
 }, {
   label: 'NuxtLabs',
@@ -13,26 +13,26 @@ const teams = [{
     src: 'https://avatars.githubusercontent.com/u/62017400?s=200&v=4'
   },
   click: () => {
-    team.value = teams[1]
+    workspace.value = workspaces[1]
   }
 }]
 
 const actions = [{
-  label: 'Create team',
+  label: 'Create workspace',
   icon: 'i-heroicons-plus-circle'
 }, {
-  label: 'Manage teams',
+  label: 'Manage workspaces',
   icon: 'i-heroicons-cog-8-tooth'
 }]
 
-const team = ref(teams[0])
+const workspace = ref(workspaces[0])
 </script>
 
 <template>
   <UDropdown
     v-slot="{ open }"
     mode="hover"
-    :items="[teams, actions]"
+    :items="[workspaces, actions]"
     class="w-full"
     :ui="{ width: 'w-full' }"
     :popper="{ strategy: 'absolute' }"
@@ -44,11 +44,11 @@ const team = ref(teams[0])
       class="w-full"
     >
       <UAvatar
-        :src="team.avatar.src"
+        :src="workspace.avatar.src"
         size="2xs"
       />
 
-      <span class="truncate text-gray-900 dark:text-white font-semibold">{{ team.label }}</span>
+      <span class="truncate text-gray-900 dark:text-white font-semibold">{{ workspace.label }}</span>
     </UButton>
   </UDropdown>
 </template>

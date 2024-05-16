@@ -38,15 +38,8 @@ useHead({
 
 .overlay {
   background-size: 100px 100px;
-  background-image:
+  /* background-image:
     linear-gradient(to right, rgb(var(--color-gray-200)) 0.5px, transparent 0.5px),
-    linear-gradient(to bottom, rgb(var(--color-gray-200)) 0.5px, transparent 0.5px);
-}
-.dark {
-  .overlay {
-    background-image:
-      linear-gradient(to right, rgb(var(--color-gray-900)) 0.5px, transparent 0.5px),
-      linear-gradient(to bottom, rgb(var(--color-gray-900)) 0.5px, transparent 0.5px);
-  }
+    linear-gradient(to bottom, rgb(var(--color-gray-200)) 0.5px, transparent 0.5px); */
 }
 </style>

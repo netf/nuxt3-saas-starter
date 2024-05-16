@@ -5,6 +5,7 @@ const { metaSymbol } = useShortcuts()
 
 const {
   signOut,
+  data,
 } = useAuth()
 
 const items = computed(() => [
@@ -66,7 +67,7 @@ const items = computed(() => [
         color="gray"
         variant="ghost"
         class="w-full"
-        label="Benjamin"
+        :label="data?.name"
         :class="[open && 'bg-gray-50 dark:bg-gray-800']"
       >
         <template #leading>
@@ -91,7 +92,7 @@ const items = computed(() => [
           Signed in as
         </p>
         <p class="truncate font-medium text-gray-900 dark:text-white">
-          ben@nuxtlabs.com
+          {{ data?.email }}
         </p>
       </div>
     </template>
