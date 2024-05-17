@@ -25,6 +25,9 @@ export default defineNuxtConfig({
     "@nuxtjs/partytown",
     "@sidebase/nuxt-auth",
   ],
+  image: {
+    lazy: true,
+  },
   components: [
     {
       path: "~/components",
@@ -95,6 +98,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
+    "/": { prerender: true },
     "/api/search.json": { prerender: true },
     "/docs": { redirect: "/docs/getting-started", prerender: false },
   },
